@@ -29,12 +29,6 @@ class Bot:
         intents.message_content = True
         client = discord.Client(intents=intents)
 
-        # 鯖を取得
-        guild = client.get_guild(self.guild_id)
-
-        # 通知用チャンネル
-        channel = guild.get_channel(self.alert_channel)
-
         # ===== イベントを設定する =====
         @client.event
         async def on_ready():
@@ -52,6 +46,10 @@ class Bot:
             # VC入退室が発生した時にメッセージを送信する
             # VC間の移動は通知しない
             if before.channel != after.channel:
+                # 鯖を取得
+                guild = client.get_guild(self.guild_id)
+                # 通知用チャンネル
+                channel = guild.get_channel(self.alert_channel)
                 # 入室したとき
                 if before.channel is None:
                     msg = f"{member.nick}({member.name}) が {after.channel.name} に参加しました。"  # noqa: E501
