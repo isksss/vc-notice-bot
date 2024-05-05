@@ -1,6 +1,7 @@
 import os
 
-class Config():
+
+class Config:
     """
     設定を取得するクラス
     todo: トークンが存在しないときの処理
@@ -17,14 +18,14 @@ class Config():
 
         token = os.environ.get("VC_NOTICE_BOT_TOKEN", "")
         return token
-    
+
     def getNoticeChannel(self) -> str:
         """
         通知を送るチャンネルIDを環境変数から取得
         """
         token = os.environ.get("VC_NOTICE_BOT_ALERT_CHANNEL", "")
         return token
-    
+
     def getGuildId(self) -> str:
         """
         監視対象のサーバーIDを環境変数から取得

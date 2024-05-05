@@ -1,5 +1,6 @@
 import bot
 
+
 def main():
     """
     エントリポイント
@@ -7,6 +8,7 @@ def main():
     """
     app = bot.Bot()
     app.run()
+
 
 if __name__ == "__main__":
     main()

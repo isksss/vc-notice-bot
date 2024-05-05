@@ -1,7 +1,8 @@
-import discord
 import config
+import discord
 
-class Bot():
+
+class Bot:
     """
     Botアプリケーションクラス
     """
@@ -19,7 +20,7 @@ class Bot():
         """
         メイン
         クライアントを作成, 各種イベントを設定する.
-        todo: クライアント取得, ギルド取得, などを関数へ切り出す 
+        todo: クライアント取得, ギルド取得, などを関数へ切り出す
         todo: VC間移動を通知へ出す? 要検討
         """
 
@@ -40,8 +41,8 @@ class Bot():
             """
             botの準備が完了した際, コンソールにログを出力
             """
-            print(f'We have logged in as {client.user}')
-        
+            print(f"We have logged in as {client.user}")
+
         @client.event
         async def on_voice_state_update(member, before, after):
             """
@@ -51,15 +52,14 @@ class Bot():
             # VC入退室が発生した時にメッセージを送信する
             # VC間の移動は通知しない
             if before.channel != after.channel:
-
                 # 入室したとき
                 if before.channel is None:
-                    msg = f'{member.nick}({member.name}) が {after.channel.name} に参加しました。'
+                    msg = f"{member.nick}({member.name}) が {after.channel.name} に参加しました。"  # noqa: E501
                     await channel.send(msg)
 
                 # 退室したとき
                 elif after.channel is None:
-                    msg = f'{member.nick}({member.name}) が {before.channel.name} から退出しました。'
+                    msg = f"{member.nick}({member.name}) が {before.channel.name} から退出しました。"  # noqa: E501
                     await channel.send(msg)
 
         # ===== イベントの設定ここまで =====
